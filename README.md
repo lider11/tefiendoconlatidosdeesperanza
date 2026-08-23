@@ -17,6 +17,26 @@ La plataforma comunica la identidad institucional, los pilares de intervención,
 - **Aportes responsables:** manifestaciones de interés para aportes económicos, en especie, conocimiento o cooperación.
 - **Transparencia:** espacios preparados para indicadores, fichas técnicas y evidencia institucional validada.
 
+## Fuente principal del proyecto
+
+La rama **`main` de este repositorio es la fuente oficial y canónica del sitio**.
+
+Todo cambio de contenido, diseño, funcionalidades o configuración debe comenzar en GitHub y superar la validación automática antes de trasladarse a la página publicada. No deben realizarse cambios paralelos directamente en la versión desplegada sin incorporarlos previamente a este repositorio.
+
+Flujo oficial:
+
+1. Crear una rama a partir de `main`.
+2. Realizar y documentar los cambios.
+3. Abrir un pull request.
+4. Aprobar la validación automática.
+5. Fusionar el cambio en `main`.
+6. Sincronizar la versión aprobada con ChatGPT Sites.
+7. Verificar la publicación y registrar la versión desplegada.
+
+La publicación en ChatGPT Sites no ocurre automáticamente por un cambio en GitHub: requiere una sincronización y un despliegue expresos de la versión aprobada.
+
+Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para el procedimiento completo.
+
 ## Principios de comunicación
 
 El sitio diferencia entre valores, pilares, programas y resultados. No presenta aspiraciones como impactos demostrados ni publica cifras o testimonios sin validación institucional.
@@ -44,8 +64,14 @@ El sitio diferencia entre valores, pilares, programas y resultados. No presenta 
 Requisitos: Node.js `>=22.13.0` y npm.
 
 ```bash
-npm install
+npm ci
 npm run dev
+```
+
+Validación antes de solicitar integración:
+
+```bash
+npm test
 ```
 
 Compilación de producción:
