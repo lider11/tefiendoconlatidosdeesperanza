@@ -34,8 +34,10 @@ test("renders accessible institutional metadata and navigation", async () => {
   assert.match(html,/"@type":"NGO"/i);
   assert.match(html,/class="skip-link" href="#contenido"/i);
   assert.match(html,/aria-label="Navegación principal"/i);
-  assert.match(html,/href="#solicitar-apoyo"/i);
-  assert.match(html,/id="privacidad"/i);
+  assert.match(html,/href="\/solicitar-orientacion"/i);
+  assert.match(html,/href="\/privacidad"/i);
+  assert.match(html,/<summary>Participa<\/summary>/i);
+  assert.doesNotMatch(html,/class="contribution-form"/i);
 });
 
 test("renders strategic SEO routes with canonical metadata and structured data",async()=>{
@@ -49,6 +51,7 @@ test("renders strategic SEO routes with canonical metadata and structured data",
     ["/transparencia","Transparencia y rendición de cuentas"],
     ["/aportes","Realizar aportes"],
     ["/solicitar-orientacion","Solicitar orientación"],
+    ["/privacidad","Privacidad y tratamiento de datos"],
   ];
   for(const[path,title]of routes){
     const response=await worker.fetch(new Request(`http://localhost${path}`,{headers:{accept:"text/html"}}),{ASSETS:{fetch:async()=>new Response("Not found",{status:404})}},{waitUntil(){},passThroughOnException(){}});

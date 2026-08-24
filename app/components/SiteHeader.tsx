@@ -14,7 +14,7 @@ export function SiteHeader(){
       <Link href="/" aria-label="Ir al inicio"><Brand compact/></Link>
       <button className="menu-button" onClick={()=>setOpen(!open)} aria-label={open?"Cerrar menú":"Abrir menú"} aria-expanded={open} aria-controls="main-navigation"><span/><span/><span/></button>
       <nav id="main-navigation" className={open?"open":""} aria-label="Navegación principal">
-        <Link href="/#nosotros" onClick={close}>Quiénes somos</Link><Link href="/programas" onClick={close}>Programas</Link><Link href="/recursos" onClick={close}>Recursos</Link><Link href="/proyectos" onClick={close}>Proyectos</Link><Link href="/transparencia" onClick={close}>Transparencia</Link><Link href="/alianzas" onClick={close}>Alianzas</Link><Link href="/solicitar-orientacion" onClick={close}>Orientación</Link>
+        <Link href="/programas" onClick={close}>Programas</Link><Link href="/recursos" onClick={close}>Recursos</Link><Link href="/transparencia" onClick={close}>Transparencia</Link><details className="nav-group"><summary>Participa</summary><div><Link href="/voluntariado" onClick={close}>Voluntariado</Link><Link href="/alianzas" onClick={close}>Alianzas</Link><Link href="/solicitar-orientacion" onClick={close}>Solicitar orientación</Link></div></details>
       </nav>
       <Link className="button button-sm header-cta" href="/aportes">Aportar</Link>
     </header>

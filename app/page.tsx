@@ -1,7 +1,5 @@
-import {ContactSection, ContributionSection, SupportSection} from "./components/forms/HomeForms";
 import {AdnWeave} from "./components/home/AdnWeave";
-import {PillarsSection} from "./components/home/PillarsSection";
-import {AboutSection, HeroSection, ImpactAndTrustSections, ParticipationSection, PrivacySection, ProgramsSection} from "./components/home/StaticSections";
+import {AboutSection, EvidenceSection, HeroSection, ParticipationSection, PillarsTeaser, ProgramsSection} from "./components/home/StaticSections";
 import {SiteFooter} from "./components/SiteFooter";
 import {SiteHeader} from "./components/SiteHeader";
 
@@ -12,14 +10,10 @@ export default function Home(){
       <HeroSection/>
       <AboutSection/>
       <AdnWeave/>
-      <PillarsSection/>
+      <PillarsTeaser/>
       <ProgramsSection/>
-      <ImpactAndTrustSections/>
-      <ContributionSection/>
-      <SupportSection/>
+      <EvidenceSection/>
       <ParticipationSection/>
-      <ContactSection/>
-      <PrivacySection/>
     </main>
     <SiteFooter/>
   </>;
