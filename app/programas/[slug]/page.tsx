@@ -4,7 +4,7 @@ import {notFound} from "next/navigation";
 import {bySlug,programs} from "../data";
 import {LineIcon,ProgramFooter,ProgramHeader} from "../components";
 export function generateStaticParams(){return programs.map(p=>({slug:p.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const p=bySlug(slug);if(!p)return{};return{title:p.title+" | Fundación Tejiendo",description:p.summary,alternates:{canonical:"/programas/"+p.slug},openGraph:{title:p.title,description:p.tagline,type:"website"}}}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const p=bySlug(slug);if(!p)return{};const url="/programas/"+p.slug;return{title:p.title,description:p.summary,alternates:{canonical:url},openGraph:{title:p.title,description:p.tagline,type:"website",url}}}
 const stages=["Identificación","Caracterización","Diseño del acompañamiento","Intervención","Seguimiento","Evaluación y cierre"];
 const allies=["Entidades territoriales y nacionales","Empresas y fundaciones empresariales","Universidades y cooperativas","Embajadas y agencias de cooperación","ONG e iglesias","Organizaciones comunitarias y donantes"];
 const safeguards=["Debida diligencia","Uso responsable de recursos","Protección de datos y confidencialidad","Protección de población vulnerable","Prevención del abuso y el acoso","Prevención del fraude y la corrupción","Rendición de cuentas","Seguimiento y evaluación"];
