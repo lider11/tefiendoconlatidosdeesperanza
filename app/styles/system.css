@@ -1,0 +1,7 @@
+body{color:var(--text-1);font-family:var(--font-body),Arial,Helvetica,sans-serif}
+h1,h2{font-family:var(--font-display),Georgia,serif}
+.section{max-width:var(--container-content)}
+.site-header{z-index:var(--z-header)}
+.button,.program-grid article,.action-grid>a,.resource-grid article,.action-options article,.evidence-cards article{transition-duration:var(--duration-normal);transition-timing-function:var(--ease-standard)}
+.button:hover,.button:focus-visible,.program-grid article:hover,.action-grid>a:hover,.resource-grid article:hover,.action-options article:hover,.evidence-cards article:hover{border-color:rgba(11,139,165,.55);box-shadow:var(--shadow-card)}
+.resource-body{max-width:var(--container-reading)}
