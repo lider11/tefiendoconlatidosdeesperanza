@@ -1,0 +1,7 @@
+import type {Metadata} from "next";
+import {ActionPage} from "../components/ActionPage";
+import {ParticipationForm} from "../components/forms/ParticipationForm";
+
+export const metadata:Metadata={title:"Alianzas para el desarrollo social",description:"Construye alianzas sociales con la Fundación Tejiendo: empresas, entidades públicas, universidades y cooperación.",alternates:{canonical:"/alianzas"}};
+const allies=[["Empresas","Inversión social, capacidades, bienes, servicios y voluntariado corporativo."],["Entidades públicas","Articulación institucional dentro de competencias, rutas y marcos aplicables."],["Universidades","Prácticas, investigación, innovación social y transferencia de conocimiento."],["Cooperación y organizaciones","Convocatorias, proyectos conjuntos, redes y fortalecimiento institucional."]];
+export default function Page(){return <ActionPage kicker="Cooperación" title="Alianzas que conectan capacidades con necesidades reales" description="Conversemos sobre una colaboración clara, responsable y orientada a resultados verificables para las comunidades." path="/alianzas"><section className="section action-page-grid"><div><h2>¿Con quiénes articulamos?</h2><div className="action-options">{allies.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div><p className="lead">La ruta contempla conversación inicial, revisión de propósito y capacidades, definición de alcance y formalización cuando corresponda.</p></div><ParticipationForm kind="alianza"/></section></ActionPage>}
