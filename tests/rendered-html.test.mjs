@@ -37,3 +37,26 @@ test("renders accessible institutional metadata and navigation", async () => {
   assert.match(html,/href="#solicitar-apoyo"/i);
   assert.match(html,/id="privacidad"/i);
 });
+
+test("renders strategic SEO routes with canonical metadata and structured data",async()=>{
+  const workerUrl=new URL("../dist/server/index.js",import.meta.url);
+  workerUrl.searchParams.set("routes",`${process.pid}-${Date.now()}`);
+  const{default:worker}=await import(workerUrl.href);
+  const routes=[
+    ["/recursos","Centro de conocimiento"],
+    ["/recursos/derecho-peticion-ruta-basica","Derecho de petición en Colombia"],
+    ["/proyectos","Proyectos y evidencias"],
+    ["/transparencia","Transparencia y rendición de cuentas"],
+    ["/aportes","Realizar aportes"],
+    ["/solicitar-orientacion","Solicitar orientación"],
+  ];
+  for(const[path,title]of routes){
+    const response=await worker.fetch(new Request(`http://localhost${path}`,{headers:{accept:"text/html"}}),{ASSETS:{fetch:async()=>new Response("Not found",{status:404})}},{waitUntil(){},passThroughOnException(){}});
+    assert.equal(response.status,200,`${path} debe responder 200`);
+    const html=await response.text();
+    assert.match(html,new RegExp(`<title>[^<]*${title.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}`,"i"),`${path} debe tener título propio`);
+    assert.match(html,new RegExp(`rel="canonical" href="https://www\\.tejiendoconlatidodeesperanza\\.site${path.replaceAll("/","\\/")}"`,"i"),`${path} debe tener canónica propia`);
+    assert.match(html,/application\/ld\+json/i,`${path} debe incluir datos estructurados`);
+    assert.doesNotMatch(html,/noindex/i,`${path} no debe bloquear indexación`);
+  }
+});
