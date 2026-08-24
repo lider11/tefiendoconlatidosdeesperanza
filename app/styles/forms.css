@@ -1,0 +1,6 @@
+:where(.support-form,.contribution-form,.contact-grid form,.participation-grid form){border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+:where(.support-form,.contribution-form,.contact-grid form,.participation-grid form) label{color:var(--text-1);font-size:.875rem;font-weight:800}
+:where(.support-form,.contribution-form,.contact-grid form,.participation-grid form) :where(input,select,textarea){min-height:46px;border:1px solid #b8ced1;border-radius:var(--radius-sm);font:inherit;font-size:1rem;transition:border-color var(--duration-fast),box-shadow var(--duration-fast)}
+:where(.support-form,.contribution-form,.contact-grid form,.participation-grid form) :where(input,select,textarea):focus-visible{border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,139,165,.16);outline:0}
+:where(.support-form,.contribution-form,.contact-grid form,.participation-grid form) :where(input,select,textarea)[aria-invalid="true"]{border-color:var(--error);box-shadow:0 0 0 3px rgba(180,35,24,.12)}
+.form-status{min-height:24px}.form-status[data-state="success"]{color:var(--success)}.form-status[data-state="error"]{color:var(--error)}
